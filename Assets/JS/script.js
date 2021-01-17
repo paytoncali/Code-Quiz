@@ -3,11 +3,12 @@
 
 var timerEl = document.querySelector(".time");
 var startEl = document.querySelector("#startbutton");
+var q1 = document.querySelector("h4");
 var timeLeft = 50;
-var rightResults = "";
-var wrongResults = "";
-// isHidden = HTMLElement.hidden;
-// HTMLElement.hidden = true | false;
+// var button1 = document.querySelector(".button1");
+// var button2 = document.querySelector(".button2");
+// var button3 = document.querySelector(".button3");
+// var button4 = document.querySelector(".button4");
 
 function timer() {
 
@@ -35,17 +36,34 @@ document.getElementById("startbutton")
 },
 false);
 
-document.getElementById("button1") && document.getElementById("button2") && document.getElementById("button3") && document.getElementById("button4")
-  .addEventListener("click", function() {
-    if (button1 === true) {
-      rightResults.textContent = "good job";
-    }
-    else {
-      wrongResults.textContent = "wrong";
-    }
+// button1.addEventListener("click", function() {
+//     if (button1 = true) {
+//       questions.textContent = "good job";
+//       document.getElementById("Q1").hidden = true;
+//       document.getElementById("Q2").hidden = false;
+//     }
+// });
 
-});
+// button2.addEventListener("click", function() {
+//     if (button2 = true) {
+//       questions.textContent = "oops! not it.";
+//       timeLeft = timeLeft - 10;
+//     }
+// });
 
+// button3.addEventListener("click", function() {
+//     if (button3 = true) {
+//       questions.textContent = "oops! not it.";
+//       timeLeft = timeLeft - 10;
+//   } 
+// });
+
+// button4.addEventListener("click", function() {
+//     if (button4 = true) {
+//       questions.textContent = "oops! not it.";
+//       timeLeft = timeLeft - 10;
+//     }
+// });
 
 
 
