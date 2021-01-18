@@ -3,12 +3,40 @@
 
 var timerEl = document.querySelector(".time");
 var startEl = document.querySelector("#startbutton");
+var questionsEl = document.querySelector("#questions");
+var answersEl = document.querySelector("#answers");
 var q1 = document.querySelector("h4");
 var timeLeft = 50;
-// var button1 = document.querySelector(".button1");
-// var button2 = document.querySelector(".button2");
-// var button3 = document.querySelector(".button3");
-// var button4 = document.querySelector(".button4");
+var questionIndex = 0
+
+var allQuestions = [
+  {
+  question: "What is used to create a string?",
+  answers: ["[]", "()", "{}", '""'],
+  rightanswer: '""',
+  },  
+  {
+  question: "What is used to create an array?",
+  answers: ["[]", "()", "{}", '""'],
+  rightanswer: "[]",
+  },
+  {
+  question: "How do you declare a variable?",
+  answers: ["var", "vari", "whatever you would like", "varb"],
+  rightanswer: "var",
+  },
+  {
+  question: "How do you comment something out in Javascript?",
+  answers: ["// comment", "<!-- <comment> -->", "/* comment */", "!! comment"],
+  rightanswer: "// comment",
+  },
+  {
+  question: "What method is used to randomly pick a number in Javascript?",
+  answers: ["Math.random();", "math.Random", "Math.random", "math.random();"],
+  rightanswer: "math.random();",
+  },
+]
+
 
 function timer() {
 
@@ -32,10 +60,43 @@ document.getElementById("startbutton")
   .addEventListener("click", function () {
     document.getElementById("gameStart").hidden = true;
     document.getElementById("startbutton").hidden = true;
-    document.getElementById("Q1").hidden = false;
 },
 false);
 
+//
+function quizStart() {
+  questionsEl = allQuestions[questionIndex].question;
+
+  displayanswers();
+};
+
+function displayanswers() {
+  for (var i=0; i < allQuestions.length; i++) {
+    var answerOptions = document.createElement("button");
+    answerOptions.textContent = allQuestions[questionIndex].answers[i];
+    answersEl.append(answerOptions);
+  }
+  checkAnswer(); 
+}
+
+function checkAnswer() {
+  var display = document.querySelector("#display");
+
+  answersEl.addEventListener("click", function() {
+    if (this.textContent === allQuestions[questionIndex].rightanswer) {
+      display.textContent = "good job";
+    
+    } else {
+      display.textContent = "nope";
+    }
+    console.log(this.textContent)
+  });
+}
+
+
+//  questionIndex++;
+
+// console.log(quizStart)
 // button1.addEventListener("click", function() {
 //     if (button1 = true) {
 //       questions.textContent = "good job";
@@ -74,10 +135,10 @@ false);
 startEl.addEventListener("click", function (event) {
   event.preventDefault();
   timer();
+  quizStart();
   console.log(startEl)
 });
 
-// timer();
 // Attach event listener to increment button element
 
 
@@ -87,28 +148,3 @@ startEl.addEventListener("click", function (event) {
 // then ask to start highscores
 
 
-// Q: What is used to create a string?
-// A: ""
-// A: {}
-// A: []
-// A: ()
-// Q: What is used to create an array?
-// A: []
-// A: {}
-// A: ()
-// A: ""
-// Q: How do you declare a variable?
-// A: Var
-// A: vari
-// A: whatever you would like
-// A: varb
-// Q: How do you comment something out in Javascript?
-// A: // comment
-// A: <!-- <comment> -->
-// A: /* comment */
-// A: !!
-// Q: What method is used to randomly pick a number in Javascript?
-// A: Math.random();
-// A: math.Random
-// A: Math.random
-// A: math.Random();
