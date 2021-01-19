@@ -37,7 +37,6 @@ var allQuestions = [
   },
 ]
 
-
 function timer() {
 
   var timeInterval = setInterval(function () {
@@ -48,7 +47,6 @@ function timer() {
       clearInterval(timeInterval);
       gameOver();
     }
-
   }, 1000);
 }
 
@@ -60,8 +58,7 @@ document.getElementById("startbutton")
   .addEventListener("click", function () {
     document.getElementById("gameStart").hidden = true;
     document.getElementById("startbutton").hidden = true;
-  },
-    false);
+}, false);
 
 function quizStart() {
   questionsEl.textContent = allQuestions[questionIndex].question;
@@ -76,16 +73,12 @@ function displayanswers() {
     var splitAnswers = allQuestions[questionIndex].answers[i];
     splitAnswers = answerOptions;
     answersEl.append(answerOptions);
-  
 
-  var button1 = answerOptions.setAttribute("id", "button1");
-  // var button2 = answerOptions.setAttribute("id", "button2");
-  // var button3 = answerOptions.setAttribute("id", "button3");
-  // var button4 = answerOptions.setAttribute("id", "button4");
-  console.log(splitAnswers);
+    var btnId = "button" + (i + 1).toString();
+    answerOptions.setAttribute("id", btnId);
+
+    console.log(answerOptions);
   }
-
-
   button1.addEventListener("click", function () {
   });
   button2.addEventListener("click", function () {
@@ -95,24 +88,22 @@ function displayanswers() {
   button4.addEventListener("click", function () {
   });
 
-  checkAnswer();
+  checkAnswer(btnId);
 }
 
-function checkAnswer() {
+function checkAnswer(btnId) {
   var display = document.querySelector("#display");
 
-  // answersEl.addEventListener("click", function(event) {
-  //   console.log("User Answer", this.textContent);
-  //   console.log("correct Answer", allQuestions[questionIndex].rightanswer);
+    console.log("User Answer", btnId);
+    console.log("correct Answer", allQuestions[questionIndex].rightanswer);
 
-  if (event.target.value === allQuestions[questionIndex].rightanswer) {
+  if (btnId == allQuestions[questionIndex].rightanswer) {
     display.textContent = "good job";
 
   } else {
     display.textContent = "nope";
   }
-  console.log(this.textContent)
-  // });
+
 }
 
 
@@ -126,7 +117,6 @@ startEl.addEventListener("click", function (event) {
   event.preventDefault();
   timer();
   quizStart();
-  console.log(startEl)
 });
 
 // Attach event listener to increment button element
