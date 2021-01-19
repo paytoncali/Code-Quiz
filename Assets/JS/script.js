@@ -11,29 +11,29 @@ var questionIndex = 0;
 
 var allQuestions = [
   {
-  question: "What is used to create a string?",
-  answers: ["[]", "()", "{}", '""'],
-  rightanswer: '""',
-  },  
-  {
-  question: "What is used to create an array?",
-  answers: ["[]", "()", "{}", '""'],
-  rightanswer: "[]",
+    question: "What is used to create a string?",
+    answers: ["[]", "()", "{}", '""'],
+    rightanswer: '""',
   },
   {
-  question: "How do you declare a variable?",
-  answers: ["var", "vari", "whatever you would like", "varb"],
-  rightanswer: "var",
+    question: "What is used to create an array?",
+    answers: ["[]", "()", "{}", '""'],
+    rightanswer: "[]",
   },
   {
-  question: "How do you comment something out in Javascript?",
-  answers: ["// comment", "<!-- <comment> -->", "/* comment */", "!! comment"],
-  rightanswer: "// comment",
+    question: "How do you declare a variable?",
+    answers: ["var", "vari", "whatever you would like", "varb"],
+    rightanswer: "var",
   },
   {
-  question: "What method is used to randomly pick a number in Javascript?",
-  answers: ["Math.random();", "math.Random", "Math.random", "math.random();"],
-  rightanswer: "math.random();",
+    question: "How do you comment something out in Javascript?",
+    answers: ["// comment", "<!-- <comment> -->", "/* comment */", "!! comment"],
+    rightanswer: "// comment",
+  },
+  {
+    question: "What method is used to randomly pick a number in Javascript?",
+    answers: ["Math.random();", "math.Random", "Math.random", "math.random();"],
+    rightanswer: "math.random();",
   },
 ]
 
@@ -60,42 +60,59 @@ document.getElementById("startbutton")
   .addEventListener("click", function () {
     document.getElementById("gameStart").hidden = true;
     document.getElementById("startbutton").hidden = true;
-},
-false);
+  },
+    false);
 
-//
 function quizStart() {
-  questionsEl = allQuestions[questionIndex].question;
+  questionsEl.textContent = allQuestions[questionIndex].question;
 
   displayanswers();
 };
 
 function displayanswers() {
-  for (var i=0; i < allQuestions.length; i++) {
+  for (var i = 0; i < allQuestions.length; i++) {
     var answerOptions = document.createElement("button");
     answerOptions.textContent = allQuestions[questionIndex].answers[i];
-    answersEl.append(answerOptions);
     var splitAnswers = allQuestions[questionIndex].answers[i];
-    splitAnswers = splitAnswers.slice(splitAnswers.lengh);
+    splitAnswers = answerOptions;
+    answersEl.append(answerOptions);
+  
+
+  var button1 = answerOptions.setAttribute("id", "button1");
+  // var button2 = answerOptions.setAttribute("id", "button2");
+  // var button3 = answerOptions.setAttribute("id", "button3");
+  // var button4 = answerOptions.setAttribute("id", "button4");
+  console.log(splitAnswers);
   }
-  checkAnswer(); 
+
+
+  button1.addEventListener("click", function () {
+  });
+  button2.addEventListener("click", function () {
+  });
+  button3.addEventListener("click", function () {
+  });
+  button4.addEventListener("click", function () {
+  });
+
+  checkAnswer();
 }
 
 function checkAnswer() {
   var display = document.querySelector("#display");
 
-  answersEl.addEventListener("click", function(event) {
-    console.log("User Answer", this.textContent);
-    console.log("correct Answer", allQuestions[questionIndex].rightanswer);
+  // answersEl.addEventListener("click", function(event) {
+  //   console.log("User Answer", this.textContent);
+  //   console.log("correct Answer", allQuestions[questionIndex].rightanswer);
 
-    if (event.target.value === allQuestions[questionIndex].rightanswer) {
-      display.textContent = "good job";
-    
-    } else {
-      display.textContent = "nope";
-    }
-    console.log(this.textContent)
-  });
+  if (event.target.value === allQuestions[questionIndex].rightanswer) {
+    display.textContent = "good job";
+
+  } else {
+    display.textContent = "nope";
+  }
+  console.log(this.textContent)
+  // });
 }
 
 
