@@ -67,7 +67,7 @@ function quizStart() {
 };
 
 function displayanswers() {
-  for (var i = 0; i < allQuestions.length; i++) {
+  for (var i = 0; i < 4; i++) {
     var answerOptions = document.createElement("button");
     answerOptions.textContent = allQuestions[questionIndex].answers[i];
     var splitAnswers = allQuestions[questionIndex].answers[i];
@@ -76,28 +76,22 @@ function displayanswers() {
 
     var btnId = "button" + (i + 1).toString();
     answerOptions.setAttribute("id", btnId);
-
     console.log(answerOptions);
   }
-  button1.addEventListener("click", function () {
-  });
-  button2.addEventListener("click", function () {
-  });
-  button3.addEventListener("click", function () {
-  });
-  button4.addEventListener("click", function () {
-  });
+  button1.addEventListener("click", checkAnswer); 
+  button2.addEventListener("click", checkAnswer);
+  button3.addEventListener("click", checkAnswer); 
+  button4.addEventListener("click", checkAnswer); 
 
-  checkAnswer(btnId);
 }
 
 function checkAnswer(btnId) {
   var display = document.querySelector("#display");
 
-    console.log("User Answer", btnId);
+    // console.log("User Answer");
     console.log("correct Answer", allQuestions[questionIndex].rightanswer);
 
-  if (btnId == allQuestions[questionIndex].rightanswer) {
+  if (button1 || button2 || button3 || button4 == allQuestions[questionIndex].rightanswer) {
     display.textContent = "good job";
 
   } else {
