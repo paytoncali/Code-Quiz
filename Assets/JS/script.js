@@ -7,7 +7,7 @@ var questionsEl = document.querySelector("#questions");
 var answersEl = document.querySelector("#answers");
 var q1 = document.querySelector("h4");
 var timeLeft = 50;
-var questionIndex = 0
+var questionIndex = 0;
 
 var allQuestions = [
   {
@@ -74,8 +74,9 @@ function displayanswers() {
   for (var i=0; i < allQuestions.length; i++) {
     var answerOptions = document.createElement("button");
     answerOptions.textContent = allQuestions[questionIndex].answers[i];
-    var answerButton = answersEl.append(answerOptions);
-    answerButton = answerButton.slice(arr.length);
+    answersEl.append(answerOptions);
+    var splitAnswers = allQuestions[questionIndex].answers[i];
+    splitAnswers = splitAnswers.slice(splitAnswers.lengh);
   }
   checkAnswer(); 
 }
@@ -99,38 +100,6 @@ function checkAnswer() {
 
 
 //  questionIndex++;
-
-// console.log(quizStart)
-// button1.addEventListener("click", function() {
-//     if (button1 = true) {
-//       questions.textContent = "good job";
-//       document.getElementById("Q1").hidden = true;
-//       document.getElementById("Q2").hidden = false;
-//     }
-// });
-
-// button2.addEventListener("click", function() {
-//     if (button2 = true) {
-//       questions.textContent = "oops! not it.";
-//       timeLeft = timeLeft - 10;
-//     }
-// });
-
-// button3.addEventListener("click", function() {
-//     if (button3 = true) {
-//       questions.textContent = "oops! not it.";
-//       timeLeft = timeLeft - 10;
-//   } 
-// });
-
-// button4.addEventListener("click", function() {
-//     if (button4 = true) {
-//       questions.textContent = "oops! not it.";
-//       timeLeft = timeLeft - 10;
-//     }
-// });
-
-
 
 
 
