@@ -74,7 +74,8 @@ function displayanswers() {
   for (var i=0; i < allQuestions.length; i++) {
     var answerOptions = document.createElement("button");
     answerOptions.textContent = allQuestions[questionIndex].answers[i];
-    answersEl.append(answerOptions);
+    var answerButton = answersEl.append(answerOptions);
+    answerButton = answerButton.slice(arr.length);
   }
   checkAnswer(); 
 }
@@ -82,8 +83,11 @@ function displayanswers() {
 function checkAnswer() {
   var display = document.querySelector("#display");
 
-  answersEl.addEventListener("click", function() {
-    if (this.textContent === allQuestions[questionIndex].rightanswer) {
+  answersEl.addEventListener("click", function(event) {
+    console.log("User Answer", this.textContent);
+    console.log("correct Answer", allQuestions[questionIndex].rightanswer);
+
+    if (event.target.value === allQuestions[questionIndex].rightanswer) {
       display.textContent = "good job";
     
     } else {
