@@ -43,7 +43,7 @@ function timer() {
     timeLeft--;
     timerEl.textContent = "Time: " + timeLeft + " seconds remaining";
 
-    if (timeLeft === 0) {
+    if (timeLeft <= 0) {
       clearInterval(timeInterval);
       gameOver();
     }
@@ -62,7 +62,7 @@ document.getElementById("startbutton")
 
 function quizStart() {
   questionsEl.textContent = allQuestions[questionIndex].question;
-
+  
   displayanswers();
 };
 
@@ -85,19 +85,20 @@ function displayanswers() {
 
 }
 
-function checkAnswer(btnId) {
+function checkAnswer(event) {
   var display = document.querySelector("#display");
-
-    // console.log("User Answer");
+    allQuestions[questionIndex].rightanswer;
     console.log("correct Answer", allQuestions[questionIndex].rightanswer);
 
-  if (button1 || button2 || button3 || button4 == allQuestions[questionIndex].rightanswer) {
+  if (event.target.innerText === allQuestions[questionIndex].rightanswer) {
     display.textContent = "good job";
+    quizStart();
+    questionIndex;
 
   } else {
     display.textContent = "nope";
+    timeLeft = timeLeft - 10;
   }
-
 }
 
 
@@ -112,6 +113,8 @@ startEl.addEventListener("click", function (event) {
   timer();
   quizStart();
 });
+
+
 
 // Attach event listener to increment button element
 
