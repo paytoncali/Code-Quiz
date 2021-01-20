@@ -21,19 +21,19 @@ var allQuestions = [
     rightanswer: "[]",
   },
   {
-    question: "How do you declare a variable?",
-    answers: ["var", "vari", "whatever you would like", "varb"],
-    rightanswer: "var",
-  },
-  {
-    question: "How do you comment something out in Javascript?",
-    answers: ["// comment", "<!-- <comment> -->", "/* comment */", "!! comment"],
-    rightanswer: "// comment",
-  },
-  {
-    question: "What method is used to randomly pick a number in Javascript?",
-    answers: ["Math.random();", "math.Random", "Math.random", "math.random();"],
-    rightanswer: "math.random();",
+  //   question: "How do you declare a variable?",
+  //   answers: ["var", "vari", "whatever you would like", "varb"],
+  //   rightanswer: "var",
+  // },
+  // {
+  //   question: "How do you comment something out in Javascript?",
+  //   answers: ["// comment", "<!-- <comment> -->", "/* comment */", "!! comment"],
+  //   rightanswer: "// comment",
+  // },
+  // {
+  //   question: "What method is used to randomly pick a number in Javascript?",
+  //   answers: ["Math.random();", "math.Random", "Math.random", "math.random();"],
+  //   rightanswer: "math.random();",
   },
 ]
 
@@ -58,42 +58,68 @@ document.getElementById("startbutton")
   .addEventListener("click", function () {
     document.getElementById("gameStart").hidden = true;
     document.getElementById("startbutton").hidden = true;
-}, false);
+  }, false);
 
-function quizStart() {
-  questionsEl.textContent = allQuestions[questionIndex].question;
-  
-  displayanswers();
-};
 
 function displayanswers() {
   for (var i = 0; i < 4; i++) {
     var answerOptions = document.createElement("button");
-    answerOptions.textContent = allQuestions[questionIndex].answers[i];
-    var splitAnswers = allQuestions[questionIndex].answers[i];
-    splitAnswers = answerOptions;
+        answerOptions.textContent = allQuestions[questionIndex].answers[i];
+
     answersEl.append(answerOptions);
 
     var btnId = "button" + (i + 1).toString();
     answerOptions.setAttribute("id", btnId);
     console.log(answerOptions);
   }
-  button1.addEventListener("click", checkAnswer); 
-  button2.addEventListener("click", checkAnswer);
-  button3.addEventListener("click", checkAnswer); 
-  button4.addEventListener("click", checkAnswer); 
 
+  button1.addEventListener("click", checkAnswer);
+  button1.setAttribute("class", "btn btn-outline-warning");
+  button1.style.width = "70px";
+  button2.addEventListener("click", checkAnswer);
+  button2.setAttribute("class", "btn btn-outline-warning");
+  button2.style.width = "70px";
+  button3.addEventListener("click", checkAnswer);
+  button3.setAttribute("class", "btn btn-outline-warning");
+  button3.style.width = "70px";
+  button4.addEventListener("click", checkAnswer);
+  button4.setAttribute("class", "btn btn-outline-warning");
+  button4.style.width = "70px";
+  quizStart();
+}
+
+function quizStart() {
+  questionsEl.textContent = allQuestions[questionIndex].question;
+  questionsEl.style.margin = "50px";
+  changeAnswerOptions();
+};
+
+function changeAnswerOptions() {
+  for (i=0; i < allQuestions[questionIndex].answers.length; i++) {
+    
+  }
+  // var answertext = answertext.setElement(button);
+  // answertext.textContent = allQuestions[questionIndex].answers[i];
+  // for (i=0; i < 4; i++) {
+  //   answersEl.textContent = allQuestions[questionIndex].answers[i];
+  // }
+  // for (i = 0; i < 4; i++) {
+  //   if (allQuestions[questionIndex].answers[i] = 0) {
+  //   } else {
+  //     answers.textContent = allQuestions[questionIndex].answers[i++];
+  //   }
+  // }
 }
 
 function checkAnswer(event) {
   var display = document.querySelector("#display");
-    allQuestions[questionIndex].rightanswer;
-    console.log("correct Answer", allQuestions[questionIndex].rightanswer);
+  allQuestions[questionIndex].rightanswer;
+  console.log("correct Answer", allQuestions[questionIndex].rightanswer);
 
   if (event.target.innerText === allQuestions[questionIndex].rightanswer) {
     display.textContent = "good job";
+    questionIndex++;
     quizStart();
-    questionIndex;
 
   } else {
     display.textContent = "nope";
@@ -101,18 +127,12 @@ function checkAnswer(event) {
   }
 }
 
-
-//  questionIndex++;
-
-
-
-
-
 startEl.addEventListener("click", function (event) {
   event.preventDefault();
   timer();
-  quizStart();
+  displayanswers();
 });
+
 
 
 
@@ -123,5 +143,3 @@ startEl.addEventListener("click", function (event) {
 // when answered correctly, it moves on to next question, when incorrectly takes 10 seconds from timer
 // when time runs out or all answers are completed, your score is shown. 
 // then ask to start highscores
-
-
