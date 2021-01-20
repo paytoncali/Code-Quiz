@@ -8,6 +8,7 @@ var answersEl = document.querySelector("#answers");
 var q1 = document.querySelector("h4");
 var timeLeft = 50;
 var questionIndex = 0;
+var undefined = false;
 
 var allQuestions = [
   {
@@ -50,10 +51,6 @@ function timer() {
   }, 1000);
 }
 
-function gameOver() {
-  timerEl.textContent = "Game Over";
-}
-
 document.getElementById("startbutton")
   .addEventListener("click", function () {
     document.getElementById("gameStart").hidden = true;
@@ -75,16 +72,16 @@ function displayanswers() {
 
   button1.addEventListener("click", checkAnswer);
   button1.setAttribute("class", "btn btn-outline-warning");
-  button1.style.width = "70px";
+  button1.style.width = "auto";
   button2.addEventListener("click", checkAnswer);
   button2.setAttribute("class", "btn btn-outline-warning");
-  button2.style.width = "70px";
+  button2.style.width = "auto";
   button3.addEventListener("click", checkAnswer);
   button3.setAttribute("class", "btn btn-outline-warning");
-  button3.style.width = "70px";
+  button3.style.width = "auto";
   button4.addEventListener("click", checkAnswer);
   button4.setAttribute("class", "btn btn-outline-warning");
-  button4.style.width = "70px";
+  button4.style.width = "auto";
   quizStart();
 }
 
@@ -95,20 +92,10 @@ function quizStart() {
 };
 
 function changeAnswerOptions() {
-  for (i=0; i < allQuestions[questionIndex].answers; i++) {
-
-  }
-  // var answertext = answertext.setElement(button);
-  // answertext.textContent = allQuestions[questionIndex].answers[i];
-  // for (i=0; i < 4; i++) {
-  //   answersEl.textContent = allQuestions[questionIndex].answers[i];
-  // }
-  // for (i = 0; i < 4; i++) {
-  //   if (allQuestions[questionIndex].answers[i] = 0) {
-  //   } else {
-  //     answers.textContent = allQuestions[questionIndex].answers[i++];
-  //   }
-  // }
+  for (i = 0; i < allQuestions[questionIndex].answers.length; i++) {
+    var selector = "button" + (i + 1);
+    document.getElementById(selector).textContent = allQuestions[questionIndex].answers[i]
+}
 }
 
 function checkAnswer(event) {
@@ -133,7 +120,15 @@ startEl.addEventListener("click", function (event) {
   displayanswers();
 });
 
+function gameOver() {
+  if (timeLeft <= 0) {
+  // timerEl.textContent = 
+  alert("Game Over");
+  } else if (allQuestions[questionIndex].question = undefined) {
+    alert("Game Over")
+  }
 
+}
 
 
 // Attach event listener to increment button element
