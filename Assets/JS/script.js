@@ -21,19 +21,19 @@ var allQuestions = [
     rightanswer: "[]",
   },
   {
-  //   question: "How do you declare a variable?",
-  //   answers: ["var", "vari", "whatever you would like", "varb"],
-  //   rightanswer: "var",
-  // },
-  // {
-  //   question: "How do you comment something out in Javascript?",
-  //   answers: ["// comment", "<!-- <comment> -->", "/* comment */", "!! comment"],
-  //   rightanswer: "// comment",
-  // },
-  // {
-  //   question: "What method is used to randomly pick a number in Javascript?",
-  //   answers: ["Math.random();", "math.Random", "Math.random", "math.random();"],
-  //   rightanswer: "math.random();",
+    question: "How do you declare a variable?",
+    answers: ["var", "vari", "whatever you would like", "varb"],
+    rightanswer: "var",
+  },
+  {
+    question: "How do you comment something out in Javascript?",
+    answers: ["// comment", "<!-- <comment> -->", "/* comment */", "!! comment"],
+    rightanswer: "// comment",
+  },
+  {
+    question: "What method is used to randomly pick a number in Javascript?",
+    answers: ["Math.random();", "math.Random", "Math.random", "math.random();"],
+    rightanswer: "math.random();",
   },
 ]
 
@@ -95,8 +95,8 @@ function quizStart() {
 };
 
 function changeAnswerOptions() {
-  for (i=0; i < allQuestions[questionIndex].answers.length; i++) {
-    
+  for (i=0; i < allQuestions[questionIndex].answers; i++) {
+
   }
   // var answertext = answertext.setElement(button);
   // answertext.textContent = allQuestions[questionIndex].answers[i];
