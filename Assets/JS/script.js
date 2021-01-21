@@ -1,6 +1,3 @@
-// come up with 5 questions and 4 answers for each question
-// create timer
-
 var timerEl = document.querySelector(".time");
 var startEl = document.querySelector("#startbutton");
 var questionsEl = document.querySelector("#questions");
@@ -8,7 +5,9 @@ var answersEl = document.querySelector("#answers");
 var q1 = document.querySelector("h4");
 var timeLeft = 50;
 var questionIndex = 0;
-var undefined = false;
+var scores = document.querySelector(".highscore");
+var homeBtn = document.querySelector("#home");
+homeBtn.setAttribute("class", "btn btn-outline-warning");
 
 var allQuestions = [
   {
@@ -45,6 +44,9 @@ function timer() {
     timerEl.textContent = "Time: " + timeLeft + " seconds remaining";
 
     if (timeLeft <= 0) {
+      clearInterval(timeInterval);
+      gameOver();
+    } else if (questionIndex === 5) {
       clearInterval(timeInterval);
       gameOver();
     }
@@ -85,10 +87,15 @@ function displayanswers() {
   quizStart();
 }
 
+// if / else to move to end game 
 function quizStart() {
+  if (questionIndex < 5) {
   questionsEl.textContent = allQuestions[questionIndex].question;
   questionsEl.style.margin = "50px";
   changeAnswerOptions();
+  } else {
+    gameOver();
+  }
 };
 
 function changeAnswerOptions() {
@@ -99,17 +106,14 @@ function changeAnswerOptions() {
 }
 
 function checkAnswer(event) {
-  var display = document.querySelector("#display");
   allQuestions[questionIndex].rightanswer;
   console.log("correct Answer", allQuestions[questionIndex].rightanswer);
 
   if (event.target.innerText === allQuestions[questionIndex].rightanswer) {
-    display.textContent = "good job";
     questionIndex++;
     quizStart();
 
   } else {
-    display.textContent = "nope";
     timeLeft = timeLeft - 10;
   }
 }
@@ -120,21 +124,40 @@ startEl.addEventListener("click", function (event) {
   displayanswers();
 });
 
+// on last question, once answered correcrtly or time runs out, display "your score is(which will be equal to the time left"
+// alert to record initials
+
 function gameOver() {
+  console.log("game has ended")
+  console.log(questionIndex);
   if (timeLeft <= 0) {
   // timerEl.textContent = 
+  console.log("ran out of time");
   alert("Game Over");
-  } else if (allQuestions[questionIndex].question = undefined) {
-    alert("Game Over")
+  } else if (questionIndex == 5) {
+    alert("Game Over");
+    console.log("answered all questions");
+    
   }
+};
+// highscores 
+// display users initals and users score
+// keep and record 
 
+scores.addEventListener("click", function() {
+    document.getElementById("gameStart").hidden = true;
+    document.getElementById("startbutton").hidden = true;
+    document.getElementById("questions").hidden = true;
+    document.getElementById("answers").hidden = true;
+    homeBtn.innerHTML = "Home";
+});
+
+function goHome() {
+  window.location.reload();
 }
 
 
-// Attach event listener to increment button element
 
 
-// when start is clicked, first question and first set of 4 answers populate and timer starts
-// when answered correctly, it moves on to next question, when incorrectly takes 10 seconds from timer
 // when time runs out or all answers are completed, your score is shown. 
 // then ask to start highscores

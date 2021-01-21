@@ -50,3 +50,10 @@ h6 {
     width: 70px;
     text-align: center;
 }
+
+#home {
+    position: fixed;
+    margin: -100px;
+    margin-left: -40px;
+    float: right;
+}
