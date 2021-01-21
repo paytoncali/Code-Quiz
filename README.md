@@ -1,37 +1,15 @@
 # Code-Quiz
 
-GIVEN I am taking a code quiz
-<!-- WHEN I click the start button -->
-<!-- THEN a timer starts and I am presented with a question -->
-<!-- WHEN I answer a question -->
-<!-- THEN I am presented with another question -->
-<!-- WHEN I answer a question incorrectly -->
-<!-- THEN time is subtracted from the clock -->
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and my score
+This website was created to generate a quiz to test users on their knowledge of JavaScript. The application has 5 questions. When you answer a question correctly, it will move onto the next question. When a question is answered incorrectly, it will deduct 10 seconds from the total 50 second allotted. If you run out of time before completely the quiz, you recieve a score of 0. If you answer all the question correctly before time runs out, then you recieve a score of the number of seconds left on the timer. Once the quiz has been completed, it will display your score and ask for your initials to record your score. 
 
+I started this project by building a core HTML with a header, paragraph and a few ID's I knew I would be utilizing later. Next I began by declaring variables in my script file. After my variables were declared I began with the quiz timer. I created a time interval to track the time left on the quiz. Once this was working, I began by creating an object for my questions, answer options and the correct answer. Next I used 6 other functions to start my quiz, display answers, change answers, check my answers, to end the game, and next to record the score and user. After this, I began to style my website to make it easily read.
 
+## Usage
 
-to do:
-<!-- * Application deployed at live URL. -->
-<!-- * Application loads with no errors. -->
-* Application GitHub URL submitted.
-<!-- * GitHub repository contains application code. -->
-<!-- * Application user experience is intuitive and easy to navigate. -->
-<!-- * Application user interface style is clean and polished. -->
-<!-- * Application resembles the mock-up functionality provided in the homework instructions. -->
-<!-- * Repository has a unique name. -->
-<!-- * Repository follows best practices for file structure and naming conventions. -->
-<!-- * Repository follows best practices for class/id naming conventions, indentation, quality comments, etc. -->
-<!-- * Repository contains multiple descriptive commit messages. -->
-* Repository contains quality readme file with description, screenshot, and link to deployed application.
+The Use of this program is to test the user on their JavaScript knowledge. 
 
-## Review
+[screencapture-file-Users-paytoncali-Documents-Code-Quiz-index-html-2021-01-20-23_36_36.pdf](https://github.com/paytoncali/Code-Quiz/files/5847079/screencapture-file-Users-paytoncali-Documents-Code-Quiz-index-html-2021-01-20-23_36_36.pdf)
 
-You are required to submit BOTH of the following for review:
+[screencapture-file-Users-paytoncali-Documents-Code-Quiz-index-html-2021-01-20-23_36_50.pdf](https://github.com/paytoncali/Code-Quiz/files/5847080/screencapture-file-Users-paytoncali-Documents-Code-Quiz-index-html-2021-01-20-23_36_50.pdf)
 
-* The URL of the functional, deployed application.
-
-* The URL of the GitHub repository, with a unique name and a readme describing the project.
+[screencapture-file-Users-paytoncali-Documents-Code-Quiz-index-html-2021-01-20-23_37_10.pdf](https://github.com/paytoncali/Code-Quiz/files/5847081/screencapture-file-Users-paytoncali-Documents-Code-Quiz-index-html-2021-01-20-23_37_10.pdf)

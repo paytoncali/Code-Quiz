@@ -2,11 +2,13 @@ var timerEl = document.querySelector(".time");
 var startEl = document.querySelector("#startbutton");
 var questionsEl = document.querySelector("#questions");
 var answersEl = document.querySelector("#answers");
-var q1 = document.querySelector("h4");
 var timeLeft = 50;
 var questionIndex = 0;
 var scores = document.querySelector(".highscore");
 var homeBtn = document.querySelector("#home");
+var gamescore = document.querySelector("#gamescore");
+var userInitials = "";
+
 homeBtn.setAttribute("class", "btn btn-outline-warning");
 
 var allQuestions = [
@@ -63,13 +65,12 @@ document.getElementById("startbutton")
 function displayanswers() {
   for (var i = 0; i < 4; i++) {
     var answerOptions = document.createElement("button");
-        answerOptions.textContent = allQuestions[questionIndex].answers[i];
+    answerOptions.textContent = allQuestions[questionIndex].answers[i];
 
     answersEl.append(answerOptions);
 
     var btnId = "button" + (i + 1).toString();
     answerOptions.setAttribute("id", btnId);
-    console.log(answerOptions);
   }
 
   button1.addEventListener("click", checkAnswer);
@@ -87,12 +88,11 @@ function displayanswers() {
   quizStart();
 }
 
-// if / else to move to end game 
 function quizStart() {
   if (questionIndex < 5) {
-  questionsEl.textContent = allQuestions[questionIndex].question;
-  questionsEl.style.margin = "50px";
-  changeAnswerOptions();
+    questionsEl.textContent = allQuestions[questionIndex].question;
+    questionsEl.style.margin = "50px";
+    changeAnswerOptions();
   } else {
     gameOver();
   }
@@ -102,18 +102,21 @@ function changeAnswerOptions() {
   for (i = 0; i < allQuestions[questionIndex].answers.length; i++) {
     var selector = "button" + (i + 1);
     document.getElementById(selector).textContent = allQuestions[questionIndex].answers[i]
-}
+  }
 }
 
 function checkAnswer(event) {
+  var display = document.querySelector("#display");
+
   allQuestions[questionIndex].rightanswer;
-  console.log("correct Answer", allQuestions[questionIndex].rightanswer);
 
   if (event.target.innerText === allQuestions[questionIndex].rightanswer) {
+    display.textContent = "Correct! Yay!"
     questionIndex++;
     quizStart();
 
   } else {
+    display.textContent = "Try Again!"
     timeLeft = timeLeft - 10;
   }
 }
@@ -124,32 +127,47 @@ startEl.addEventListener("click", function (event) {
   displayanswers();
 });
 
-// on last question, once answered correcrtly or time runs out, display "your score is(which will be equal to the time left"
-// alert to record initials
-
 function gameOver() {
-  console.log("game has ended")
-  console.log(questionIndex);
   if (timeLeft <= 0) {
-  // timerEl.textContent = 
-  console.log("ran out of time");
-  alert("Game Over");
+    display.textContent = "Game Over";
   } else if (questionIndex == 5) {
-    alert("Game Over");
-    console.log("answered all questions");
-    
+    display.textContent = "Game Over";
+  }
+  User()
+};
+
+function User() {
+
+  var getScore = timeLeft;
+
+  var score = document.querySelector("#endscore");
+  var userInitials = prompt("input initials");
+  score.textContent = "You're score is " + getScore;
+
+  if (userInitials === "") {
+    displayMessage("Error", "Can Not Be Blank")
+    return user();
+  }
+  else {
+    localStorage.setItem("userinitials", JSON.stringify(userInitials));
+    localStorage.setItem("Score", JSON.stringify(getScore));
   }
 };
+
 // highscores 
 // display users initals and users score
 // keep and record 
 
-scores.addEventListener("click", function() {
-    document.getElementById("gameStart").hidden = true;
-    document.getElementById("startbutton").hidden = true;
-    document.getElementById("questions").hidden = true;
-    document.getElementById("answers").hidden = true;
-    homeBtn.innerHTML = "Home";
+scores.addEventListener("click", function () {
+  document.getElementById("gameStart").hidden = true;
+  document.getElementById("startbutton").hidden = true;
+  document.getElementById("questions").hidden = true;
+  document.getElementById("answers").hidden = true;
+  document.getElementById("gamescore").hidden = true;
+  document.getElementById("display").hidden = true;
+  document.getElementById("viewhighscoretab").hidden = false;
+  homeBtn.innerHTML = "Home";
+  
 });
 
 function goHome() {
