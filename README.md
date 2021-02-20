@@ -13,3 +13,6 @@ The Use of this program is to test the user on their JavaScript knowledge.
 [screencapture-file-Users-paytoncali-Documents-Code-Quiz-index-html-2021-01-20-23_36_50.pdf](https://github.com/paytoncali/Code-Quiz/files/5847080/screencapture-file-Users-paytoncali-Documents-Code-Quiz-index-html-2021-01-20-23_36_50.pdf)
 
 [screencapture-file-Users-paytoncali-Documents-Code-Quiz-index-html-2021-01-20-23_37_10.pdf](https://github.com/paytoncali/Code-Quiz/files/5847081/screencapture-file-Users-paytoncali-Documents-Code-Quiz-index-html-2021-01-20-23_37_10.pdf)
+
+https://paytoncali.github.io/Code-Quiz/;
+https://github.com/paytoncali/Code-Quiz.git;

@@ -154,6 +154,8 @@ function User() {
   }
 };
 
+
+
 // highscores 
 // display users initals and users score
 // keep and record 
